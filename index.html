@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freelance Express | Serviços freelance de design, marketing e web</title>
+  <meta name="description" content="Freelance Express conecta sua empresa a profissionais de web, design, marketing e conteúdo. Solicite orçamento via WhatsApp ou e-mail." />
+  <meta name="keywords" content="freelance, serviços freelance, desenvolvimento web, design gráfico, marketing digital, copywriting, orçamento, contato" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://freelanceexpress.com/" />
+  <meta property="og:title" content="Freelance Express | Serviços freelance de design, marketing e web" />
+  <meta property="og:description" content="Conecte seu projeto com especialistas em desenvolvimento web, design gráfico, marketing digital e conteúdo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelanceexpress.com/" />
+  <meta property="og:image" content="https://freelanceexpress.com/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Freelance Express | Serviços freelance" />
+  <meta name="twitter:description" content="Solicite orçamento por WhatsApp ou e-mail e encontre profissionais freelance qualificados." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">Serviços Freelance</span>
+      <h1>Encontre talentos criativos para o seu projeto</h1>
+      <p>Desenvolvimento web, design, marketing digital e conteúdos profissionais com entrega rápida e qualidade.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn primary">Veja os serviços</a>
+        <a href="#contact" class="btn secondary">Solicite um orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section about">
+      <div class="container grid-2">
+        <div>
+          <p class="section-label">Quem somos</p>
+          <h2>Seu marketplace de freelancers para resultados reais</h2>
+          <p>Conectamos clientes a profissionais qualificados em design, desenvolvimento, redes sociais e produção de conteúdo. Aqui cada projeto recebe atenção personalizada e entregas no prazo.</p>
+        </div>
+        <div class="about-cards">
+          <div class="card">
+            <h3>Profissionais selecionados</h3>
+            <p>Perfis verificados com experiência comprovada em projetos reais.</p>
+          </div>
+          <div class="card">
+            <h3>Comunicação clara</h3>
+            <p>Acompanhamento do início ao fim, com atualizações diretas.</p>
+          </div>
+          <div class="card">
+            <h3>Suporte rápido</h3>
+            <p>Respostas ágeis para pedidos de orçamento e dúvidas sobre serviços.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section services">
+      <div class="container">
+        <p class="section-label">Serviços</p>
+        <h2>O que oferecemos</h2>
+        <div class="grid-3 service-list">
+          <article class="service-card interactive" data-service="web" tabindex="0">
+            <h3>Desenvolvimento Web</h3>
+            <p>Sites responsivos, lojas virtuais e landing pages otimizadas para conversão.</p>
+          </article>
+          <article class="service-card interactive" data-service="design" tabindex="0">
+            <h3>Design Gráfico</h3>
+            <p>Identidade visual, logos, materiais impressos e layouts profissionais.</p>
+          </article>
+          <article class="service-card interactive" data-service="marketing" tabindex="0">
+            <h3>Marketing Digital</h3>
+            <p>Planejamento de campanhas, gestão de redes sociais e anúncios pagos.</p>
+          </article>
+          <article class="service-card interactive" data-service="conteudo" tabindex="0">
+            <h3>Conteúdo e Copywriting</h3>
+            <p>Textos persuasivos para sites, blogs, newsletters e descrições de produtos.</p>
+          </article>
+          <article class="service-card interactive" data-service="uxui" tabindex="0">
+            <h3>Consultoria UX/UI</h3>
+            <p>Melhoria da experiência do usuário e design de interfaces intuitivas.</p>
+          </article>
+          <article class="service-card interactive" data-service="suporte" tabindex="0">
+            <h3>Manutenção e Suporte</h3>
+            <p>Atualizações, ajustes rápidos e suporte técnico contínuo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div id="service-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button type="button" id="modal-close" class="modal-close" aria-label="Fechar modal">×</button>
+        <p class="section-label">Detalhes do serviço</p>
+        <h2 id="modal-title">Serviço</h2>
+        <p id="modal-description"></p>
+        <ul id="modal-benefits" class="modal-benefits"></ul>
+        <button type="button" id="modal-quote" class="btn primary">Solicitar orçamento</button>
+      </div>
+    </div>
+
+    <section id="testimonials" class="section testimonials">
+      <div class="container">
+        <p class="section-label">Depoimentos</p>
+        <h2>Clientes satisfeitos</h2>
+        <div class="grid-3 testimonial-list">
+          <article class="testimonial-card">
+            <p>"O trabalho foi entregue antes do prazo e com excelente qualidade. Recomendo muito!"</p>
+            <span>— Marina, gerente de projetos</span>
+          </article>
+          <article class="testimonial-card">
+            <p>"A identidade visual ficou perfeita e a comunicação foi muito clara durante todo o processo."</p>
+            <span>— Felipe, empreendedor digital</span>
+          </article>
+          <article class="testimonial-card">
+            <p>"A equipe ajudou a transformar nossas ideias em um site moderno e funcional."</p>
+            <span>— Carla, dona de e-commerce</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container grid-2">
+        <div>
+          <p class="section-label">Contato</p>
+          <h2>Trabalhe conosco por WhatsApp ou e-mail</h2>
+          <p>Escolha o canal mais prático: mensagem instantânea no WhatsApp ou um e-mail detalhado para o seu projeto.</p>
+          <div class="contact-actions">
+            <a class="btn primary" href="https://wa.me/5511999999999?text=Olá%20Freelance%20Express%2C%20gostaria%20de%20um%20orçamento." target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+            <a class="btn secondary" href="mailto:contato@freelanceexpress.com?subject=Orçamento%20Freelance%20Express">Enviar e-mail</a>
+          </div>
+          <ul class="contact-features">
+            <li>Atendimento rápido por WhatsApp</li>
+            <li>Proposta detalhada por e-mail</li>
+            <li>Suporte disponível em até 24 horas</li>
+          </ul>
+        </div>
+        <div>
+          <form id="contact-form" class="contact-form">
+            <label>
+              Nome completo
+              <input type="text" name="name" placeholder="Seu nome" required />
+            </label>
+            <label>
+              E-mail
+              <input type="email" name="email" placeholder="Seu e-mail" required />
+            </label>
+            <label>
+              Serviço desejado
+              <select name="service" required>
+                <option value="">Selecione um serviço</option>
+                <option value="web">Desenvolvimento Web</option>
+                <option value="design">Design Gráfico</option>
+                <option value="marketing">Marketing Digital</option>
+                <option value="conteudo">Conteúdo / Copywriting</option>
+              </select>
+            </label>
+            <label>
+              Mensagem
+              <textarea name="message" rows="5" placeholder="Descreva seu projeto" required></textarea>
+            </label>
+            <button type="submit" class="btn primary">Enviar pedido</button>
+            <p id="form-status" class="form-status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <p>Freelance Express © 2026</p>
+      <p>Conectando projetos com profissionais compromissados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

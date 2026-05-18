@@ -1,0 +1,17 @@
+{
+  "name": "freelance-express-site",
+  "version": "1.0.0",
+  "description": "Site de serviços freelance com backend Node.js e contato via WhatsApp ou e-mail",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

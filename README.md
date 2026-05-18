@@ -1,93 +1,126 @@
 # Freelance Express
 
-Site de serviços freelance com backend Node.js e suporte a contato via WhatsApp e e-mail.
+Projeto com frontend estatico (GitHub Pages) + backend Node.js/Express para envio de contatos por e-mail.
 
-## Como usar localmente
+## Arquitetura de publicacao
 
-1. Instale o Node.js (versão 18 ou superior).
-2. Abra o terminal na pasta `c:\Yuri\teste`.
-3. Rode:
+- Frontend: GitHub Pages (HTML/CSS/JS)
+- Backend: servidor Node externo (Render, Railway ou similar)
+- Formulario: envia para `POST /api/contact`
+
+## Recursos de seguranca do backend
+
+- `helmet` para headers HTTP de protecao
+- CORS por allowlist (`ALLOWED_ORIGINS`)
+- Rate limit global e rate limit especifico no formulario
+- Validacao server-side de todos os campos
+- Honeypot anti-bot (`company`)
+- Limite de payload JSON (`20kb`)
+- `x-powered-by` desabilitado
+
+## Como rodar localmente
+
+1. Instale dependencias:
 
 ```bash
 npm install
 ```
 
-4. Copie o arquivo `.env.example` para `.env` e preencha com os dados SMTP:
+2. Crie seu `.env` local:
 
 ```bash
 copy .env.example .env
 ```
 
-5. Inicie o servidor:
+3. Preencha as variaveis no `.env` (SMTP e CORS).
+
+4. Inicie:
 
 ```bash
 npm start
 ```
 
-6. Acesse:
+5. Acesse:
 
 ```bash
 http://localhost:3000
 ```
 
-## Contato do site
+6. Verifique saude da API:
 
-- Botão `Abrir WhatsApp` abre o WhatsApp Web com mensagem pronta.
-- Botão `Enviar e-mail` abre o cliente de e-mail padrão.
-- O formulário de contato também envia a mensagem ao backend para envio por e-mail.
+```bash
+http://localhost:3000/api/health
+```
 
-## Publicação na web - GitHub Pages
+## Variaveis de ambiente
 
-### Opção 1: GitHub Pages + Domínio personalizado (Recomendado)
+Use `.env.example` como referencia:
 
-1. **Crie um repositório no GitHub:**
-   - Vá para [github.com/new](https://github.com/new)
-   - Nomeie como `freelanceexpress` ou similar
-   - Clique em "Create repository"
+- `NODE_ENV`
+- `PORT`
+- `TRUST_PROXY`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
+- `CONTACT_EMAIL`
+- `ALLOWED_ORIGINS` (lista separada por virgula)
 
-2. **Configure Git localmente:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Inicial: site freelance"
-   git branch -M main
-   git remote add origin https://github.com/seu-usuario/freelanceexpress.git
-   git push -u origin main
-   ```
+Exemplo de `ALLOWED_ORIGINS`:
 
-3. **Ative GitHub Pages:**
-   - Vá para Settings > Pages
-   - Source: Deploy from a branch
-   - Branch: `gh-pages`
-   - Salve
+```env
+ALLOWED_ORIGINS=https://seu-usuario.github.io,https://www.seudominio.com
+```
 
-4. **Configure domínio (opcional):**
-   - Em Settings > Pages, adicione `freelanceexpress.com`
-   - Configure o CNAME no seu registrador de domínio
+## Configurando URL do backend no frontend
 
-5. **O site ficará disponível em:**
-   - `https://seu-usuario.github.io/freelanceexpress`
-   - Ou `https://freelanceexpress.com` (com domínio)
+Edite `config.js`:
 
-### ⚠️ Observação: Backend não funciona no GitHub Pages
+```js
+window.__APP_CONFIG__ = {
+  apiBaseUrl: 'https://seu-backend.onrender.com',
+};
+```
 
-GitHub Pages é apenas para conteúdo estático. O backend Node.js não será executado lá. Isso significa:
-- ✅ O site estático (HTML/CSS/JS) funcionará
-- ❌ O formulário de contato NÃO enviará e-mails
-- ✅ Links WhatsApp e e-mail continuarão funcionando
+Para ambiente local com frontend e backend no mesmo host, pode deixar vazio:
 
-### Opção 2: Backend em outro servidor
+```js
+window.__APP_CONFIG__ = {
+  apiBaseUrl: '',
+};
+```
 
-Para manter o backend funcionando, hospede-o em:
-- **Vercel** (recomendado): `npm i -g vercel` e `vercel deploy`
-- **Render.com**: Conecte o repositório GitHub
-- **Railway**: Deploy rápido com Node.js
-- **Heroku**: Free tier descontinuado
+## Deploy do frontend no GitHub Pages
 
-Então, atualize a URL da API no `script.js` para apontar para seu servidor backend.
+Este repositorio ja possui workflow em `.github/workflows/deploy.yml` para publicar automaticamente ao fazer push em `main`/`master`.
 
-## Arquivos importantes
+Passos:
 
-- `robots.txt` — permite indexação nos buscadores
-- `sitemap.xml` — mapa do site para SEO
-- `.github/workflows/deploy.yml` — deploy automático ao fazer push
+1. Suba o repositorio no GitHub.
+2. Em `Settings > Pages`, confirme que o deploy esta usando GitHub Actions.
+3. Aguarde o workflow concluir.
+4. Seu site ficara em `https://seu-usuario.github.io/seu-repo` (ou dominio customizado).
+
+## Deploy do backend (Node) no Render
+
+1. Crie uma Web Service no Render conectando este repositorio.
+2. Configure:
+- Build Command: `npm install`
+- Start Command: `npm start`
+3. Adicione as variaveis de ambiente do `.env.example`.
+4. Em `ALLOWED_ORIGINS`, inclua a URL publica do seu GitHub Pages.
+5. Copie a URL final do backend (`https://...onrender.com`) e cole em `config.js`.
+
+## Checklist de seguranca antes de publicar
+
+- Nunca subir `.env` com credenciais reais.
+- Usar senha de app SMTP (nao senha principal da conta).
+- Definir `ALLOWED_ORIGINS` com seus dominios reais.
+- Revisar logs do provedor para tentativas de abuso.
+- Rotacionar imediatamente credenciais antigas, se ja foram expostas.
+
+## Observacao importante
+
+GitHub Pages NAO executa backend Node.js. Ele publica somente arquivos estaticos. Por isso o backend precisa ficar em um servidor Node separado.

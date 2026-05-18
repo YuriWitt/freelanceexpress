@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -156,11 +156,17 @@
                 <option value="design">Design Gráfico</option>
                 <option value="marketing">Marketing Digital</option>
                 <option value="conteudo">Conteúdo / Copywriting</option>
+                <option value="uxui">Consultoria UX/UI</option>
+                <option value="suporte">Manutenção e Suporte</option>
               </select>
             </label>
             <label>
               Mensagem
               <textarea name="message" rows="5" placeholder="Descreva seu projeto" required></textarea>
+            </label>
+            <label class="honeypot-field" aria-hidden="true">
+              Empresa
+              <input type="text" name="company" tabindex="-1" autocomplete="off" />
             </label>
             <button type="submit" class="btn primary">Enviar pedido</button>
             <p id="form-status" class="form-status"></p>
@@ -177,6 +183,8 @@
     </div>
   </footer>
 
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+

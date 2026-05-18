@@ -1,4 +1,4 @@
-﻿const form = document.querySelector('#contact-form');
+const form = document.querySelector('#contact-form');
 const statusMessage = document.querySelector('#form-status');
 const serviceCards = document.querySelectorAll('.service-card.interactive');
 const modal = document.querySelector('#service-modal');
@@ -9,6 +9,7 @@ const modalBenefits = document.querySelector('#modal-benefits');
 const modalQuote = document.querySelector('#modal-quote');
 const serviceSelect = document.querySelector('select[name="service"]');
 const contactSection = document.querySelector('#contact');
+const API_BASE_URL = resolveApiBaseUrl();
 
 const serviceDetails = {
   web: {
@@ -122,19 +123,19 @@ if (form) {
       email: formData.get('email'),
       service: formData.get('service'),
       message: formData.get('message'),
+      company: formData.get('company') || '',
     };
 
     statusMessage.textContent = 'Enviando solicitação...';
     statusMessage.style.color = '#9cb0ff';
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(buildApiUrl('/api/contact'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(result.message || 'Falha ao enviar a mensagem.');
@@ -144,9 +145,24 @@ if (form) {
       statusMessage.style.color = '#a5d6a7';
       form.reset();
     } catch (error) {
-      statusMessage.textContent = 'Erro ao enviar. Por favor tente via WhatsApp ou e-mail.';
+      const fallbackMessage = 'Erro ao enviar. Por favor tente via WhatsApp ou e-mail.';
+      statusMessage.textContent =
+        error && error.message && error.message !== 'Failed to fetch' ? error.message : fallbackMessage;
       statusMessage.style.color = '#ff8a8a';
       console.error(error);
     }
   });
+}
+
+function resolveApiBaseUrl() {
+  if (window.__APP_CONFIG__ && typeof window.__APP_CONFIG__.apiBaseUrl === 'string') {
+    return window.__APP_CONFIG__.apiBaseUrl.replace(/\/+$/, '');
+  }
+
+  return '';
+}
+
+function buildApiUrl(path) {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${API_BASE_URL}${normalizedPath}`;
 }

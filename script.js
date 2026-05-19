@@ -22,21 +22,21 @@ const serviceDetails = {
     ],
   },
   design: {
-    title: 'Design Gráfico',
-    description: 'Criamos identidade visual consistente para fortalecer sua marca em qualquer canal.',
+    title: 'Desenvolvimento Mobile',
+    description: 'Criamos aplicativos para iOS e Android, com interface intuitiva e desempenho otimizado.',
     benefits: [
-      'Logos e identidade visual',
-      'Materiais digitais e impressos',
-      'Layouts de alta qualidade',
+      'Otimização de performance',
+      'Identidade visual consistente',
+      'Interfaces de alta qualidade',
     ],
   },
   marketing: {
-    title: 'Marketing Digital',
-    description: 'Planejamos campanhas eficazes para aumentar alcance, conversão e engajamento.',
+    title: 'Infraestrutura',
+    description: 'Configuração e manutenção de servidores, redes e sistemas.',
     benefits: [
-      'Conteúdo estratégico para redes sociais',
-      'Anúncios otimizados para ROI',
-      'Monitoramento de resultados',
+      'Configuração de servidores',
+      'Manutenção preventiva e corretiva',
+      'Suporte técnico especializado',
     ],
   },
   conteudo: {

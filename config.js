@@ -1,4 +1,4 @@
 window.__APP_CONFIG__ = {
   // Exemplo: 'https://seu-backend.onrender.com'
-  apiBaseUrl: '',
+  apiBaseUrl: 'https://freelanceexpress.onrender.com',
 };
